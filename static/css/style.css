@@ -1,4 +1,4 @@
-/* OrbitScience: Estilo Galería tipo Netflix */
+/* OrbitScience: Estilo GalerÃ­a tipo Netflix */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 body {
@@ -20,13 +20,13 @@ body {
     }
 
     .logo-header p.text-muted {
-        color: #ffffff !important; /* Un celeste neón para que resalte */
+        color: #ffffff !important; /* Un celeste neÃ³n para que resalte */
         font-size: 1.2rem;
         font-weight: 600;
         text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
         margin-top: 10px;
     }
-/* Contenedor de la Galería */
+/* Contenedor de la GalerÃ­a */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -92,4 +92,16 @@ body {
     .btn-dislike:hover {
         background-color: #dc3545;
         color: white;
+    }
+
+.btn-outline-info {
+    border-color: #00d2ff;
+    color: #00d2ff;
+    transition: all 0.3s ease;
+}
+
+    .btn-outline-info:hover {
+        background-color: #00d2ff;
+        color: #000;
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
     }
