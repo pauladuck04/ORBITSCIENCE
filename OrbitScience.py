@@ -12,7 +12,7 @@ from nltk.stem import SnowballStemmer
 
 app = Flask(__name__)
 
-# --- CARGA Y CONFIGURACI”N ---
+# --- CARGA Y CONFIGURACI√ìN ---
 url = 'https://raw.githubusercontent.com/qpabloquiroga/ABP/refs/heads/main/arxiv.json'
 df = pd.read_json(url, lines=True)
 df = df.dropna(subset=['abstract'])
@@ -68,7 +68,7 @@ def registrar_feedback(title, action):
     save_feedback(data)
     return f"Registrado: {action} en {title}"
 
-# --- FUNCI”N DE PREDICCI”N ---
+# --- FUNCI√ìN DE PREDICCI√ìN ---
 @app.route('/predecir/<path:title>')
 def obtener_prediccion_ia(title):
     title = title.strip()
@@ -95,7 +95,7 @@ def obtener_prediccion_ia(title):
         sim_like = calcular_proximidad(data["likes"])
         sim_dislike = calcular_proximidad(data["dislikes"])
 
-        # --- NUEVA L”GICA CON UMBRAL DEL 15% ---
+        # --- NUEVA L√ìGICA CON UMBRAL DEL 15% ---
         umbral = 0.15
         porcentaje = int(sim_like * 100)
 
@@ -124,11 +124,13 @@ def obtener_prediccion_ia(title):
 # --- RUTAS ---
 # Ruta paginada (mejora UX)
 @app.route('/')
+@app.route('/')
 def home():
-    page = request.args.get('page', 1, type=int)
+    page = request.args.get('page', 1, type=int) # Lee la p√°gina actual
     per_page = 20
     start = (page - 1) * per_page
     papers_list = df.iloc[start:start+per_page].to_dict('records')
+    # Es vital pasar 'page=page' para que el HTML sepa en qu√© p√°gina est√°
     return render_template('index.html', papers=papers_list, page=page)
 
 @app.route('/predecir', methods=['POST'])
@@ -166,7 +168,7 @@ def api_similares():
         # Calcular similitud contra todos
         sims = cosine_similarity(tfidf_matrix[idx], tfidf_matrix).flatten()
         
-        # Los 3 m·s parecidos (saltando el 1ero)
+        # Los 3 m√°s parecidos (saltando el 1ero)
         indices = sims.argsort()[-4:-1][::-1]
         
         res = []
