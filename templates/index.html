@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -26,6 +26,19 @@
             <div class="badge bg-danger mt-2">Doble clic para abrir</div>
         </div>
         {% endfor %}
+    </div>
+    <div class="d-flex justify-content-center align-items-center gap-4 my-5">
+        {% if page > 1 %}
+        <a href="{{ url_for('home', page=page-1) }}" class="btn btn-outline-info btn-lg px-4">
+            &larr; Anterior
+        </a>
+        {% endif %}
+
+        <span class="fs-5 fw-bold text-white">Página {{ page }}</span>
+
+        <a href="{{ url_for('home', page=page+1) }}" class="btn btn-outline-info btn-lg px-4">
+            Siguiente &rarr;
+        </a>
     </div>
 
     <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
@@ -111,10 +124,10 @@
                             }
                             data.forEach(p => {
                                 simContainer.innerHTML += `
-                        <div class="d-flex justify-content-between p-2 mb-1 rounded" style="background:rgba(0,210,255,0.1); border-left: 2px solid #00d2ff;">
-                            <span class="small text-white-50">${p.title}</span>
-                            <span class="badge text-info">${p.porcentaje}%</span>
-                        </div>`;
+                            <div class="d-flex justify-content-between p-2 mb-1 rounded" style="background:rgba(0,210,255,0.1); border-left: 2px solid #00d2ff;">
+                                <span class="small text-white-50">${p.title}</span>
+                                <span class="badge text-info">${p.porcentaje}%</span>
+                            </div>`;
                             });
                         }).catch(err => console.log("Error Similares:", err));
                 });
