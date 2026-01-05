@@ -1,4 +1,4 @@
-/* OrbitScience: Estilo Galería tipo Netflix */
+/* OrbitScience: Estilo GalerÃ­a tipo Netflix */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 body {
@@ -116,4 +116,5 @@ body {
 
 .badge.bg-danger {
     box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+
 }
